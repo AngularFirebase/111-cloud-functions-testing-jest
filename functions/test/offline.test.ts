@@ -11,14 +11,11 @@ import { makePayment } from '../src';
 describe('makePayment', () => {
 
   
-  test('it returns a successful response with a valid card', (done) => {
-    // A fake request object, with req.query.text set to 'input'
+  test('it returns a successful response with a valid card', () => {
     const req = { body: { card: '4242424242424242' } };
-    // A fake response object, with a stubbed redirect function which does some assertions
     const res = {
       send: (payload) => {
         expect(payload).toBe('Payment processed!')
-        done();
       }, 
     };
 
@@ -26,12 +23,11 @@ describe('makePayment', () => {
   }); 
 
 
-  test('it returns an error with an invalid card', (done) => {
+  test('it returns an error with an invalid card', () => {
     const req = { body: { card: null } };
     const res = {
       send: (payload) => {
         expect(payload).toBe('Missing card!')
-        done();
       }, 
     };
     
